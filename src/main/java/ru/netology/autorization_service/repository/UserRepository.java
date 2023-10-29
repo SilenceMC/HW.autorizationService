@@ -13,11 +13,9 @@ public class UserRepository {
     private Map<UserLogin, List<Authorities>> usersAuthorities = new ConcurrentHashMap<>();
 
 
-    public List<Authorities> getUserAuthorities(String user, String password) {
-        for (Map.Entry<UserLogin, List<Authorities>> pair : usersAuthorities.entrySet()) {
-            if (pair.getKey().getUser().equals(user) && pair.getKey().getPassword().equals(password)) {
-                return pair.getValue();
-            }
+    public List<Authorities> getUserAuthorities(UserLogin userLogin) {
+        if (usersAuthorities.containsKey(userLogin)) {
+            return usersAuthorities.get(userLogin);
         }
         return Collections.emptyList();
     }
