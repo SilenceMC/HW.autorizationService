@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  autorization_service:
+    image: 'autorization_service:latest'
+    build: ./
+    ports:
+      - 8080:8080
